@@ -1,6 +1,5 @@
 import os
 import logging
-from pathlib import Path
 from dotenv import load_dotenv
 import requests
 
@@ -8,11 +7,16 @@ import requests
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-# Find .env file in current or parent directories
-env_path = Path(__file__).parent.parent.parent / "backend" / ".env"
-load_dotenv(dotenv_path=env_path)
+# Load .env from backend directory
+load_dotenv(dotenv_path="backend/.env")
+
+# Debug: Check if .env file loads
+print(f"Current working directory: {os.getcwd()}")
+print(f"Environment variables loaded:")
+print(f"OPENWEATHER_API_KEY exists: {'OPENWEATHER_API_KEY' in os.environ}")
 
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
+print(f"OPENWEATHER_API_KEY value: {OPENWEATHER_API_KEY}")
 
 def fetch_weather(lat: float, lon: float):
     """
@@ -25,6 +29,7 @@ def fetch_weather(lat: float, lon: float):
     Returns:
         float: A safety factor (1.0 for normal conditions, higher for hazards).
     """
+    print(f"OpenWeather: {OPENWEATHER_API_KEY}")
     if not OPENWEATHER_API_KEY:
         logger.warning("OpenWeather API key missing.")
         return 1.0

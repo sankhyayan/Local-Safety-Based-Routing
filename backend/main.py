@@ -2,6 +2,7 @@ import os
 import logging
 from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 from backend.lib.helper.graphhopper_api import get_routes_from_graphhopper
@@ -11,6 +12,15 @@ from backend.lib.logic.get_safest_routes import compute_safest_route_and_score
 # -------------------- Setup --------------------
 load_dotenv()
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

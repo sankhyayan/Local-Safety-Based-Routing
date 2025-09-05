@@ -1,0 +1,4 @@
+2025-09-04 04:50:03.665 [main] INFO  i.d.core.server.DefaultServerFactory - Registering jersey handler with root path prefix: /
+2025-09-04 04:50:03.670 [main] INFO  i.d.core.server.DefaultServerFactory - Registering admin handler with root path prefix: /
+2025-09-04 04:53:02.477 [main] INFO  i.d.core.server.DefaultServerFactory - Registering jersey handler with root path prefix: /
+2025-09-04 04:53:02.482 [main] INFO  i.d.core.server.DefaultServerFactory - Registering admin handler with root path prefix: /

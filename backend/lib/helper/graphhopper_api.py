@@ -13,7 +13,7 @@ def get_routes_from_graphhopper(start_lat: float, start_lon: float, end_lat: flo
     try:
         gh_params = {
             "points": [[start_lon, start_lat], [end_lon, end_lat]], # Corrected `end_lat`
-            "profile": "car_avoid_traffic",
+            "profile": "car_avoid_traffic", # TODO make dynamic
             "details": ["road_class", "max_speed"],
             "points_encoded": False,
             "algorithm":"alternative_route",

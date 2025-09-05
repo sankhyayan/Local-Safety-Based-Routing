@@ -7,8 +7,10 @@ import requests
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
+# Load .env from backend directory
+load_dotenv(dotenv_path="backend/.env")
+
 # Debug: Check if .env file loads
-load_dotenv()
 print(f"Current working directory: {os.getcwd()}")
 print(f"Environment variables loaded:")
 print(f"TOMTOM_API_KEY exists: {'TOMTOM_API_KEY' in os.environ}")

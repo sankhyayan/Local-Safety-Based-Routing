@@ -208,17 +208,6 @@ black backend/
 
 ---
 
-## 📈 Roadmap
-
-- [ ] **🤖 Machine Learning** - AI-powered route optimization
-- [ ] **📱 Mobile App** - Native iOS/Android applications
-- [ ] **🌍 Global Coverage** - Support for cities worldwide
-- [ ] **👥 Community Reports** - User-generated safety updates
-- [ ] **🚁 Drone Integration** - Real-time aerial traffic monitoring
-- [ ] **🔐 Privacy Mode** - Anonymous route calculation
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

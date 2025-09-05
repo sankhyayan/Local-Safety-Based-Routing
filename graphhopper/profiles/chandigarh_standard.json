@@ -1,0 +1,23 @@
+{
+  "priority": [
+    { "if": "true", "multiply_by": 1.0 },
+
+    { "if": "road_class == MOTORWAY", "multiply_by": 1.15 },
+    { "if": "road_class == TRUNK", "multiply_by": 1.1 },
+    { "if": "road_class == PRIMARY", "multiply_by": 1.05 },
+    { "if": "road_class == RESIDENTIAL", "multiply_by": 0.95 }
+  ],
+
+  "speed": [
+    { "if": "true", "limit_to": 120 },
+
+    { "if": "road_class == MOTORWAY", "limit_to": 80 },
+    { "if": "road_class == TRUNK", "limit_to": 70 },
+    { "if": "road_class == PRIMARY", "limit_to": 60 },
+    { "if": "road_class == SECONDARY", "limit_to": 50 },
+    { "if": "road_class == TERTIARY", "limit_to": 45 },
+    { "if": "road_class == RESIDENTIAL", "limit_to": 35 }
+  ],
+
+  "distance_influence": 70
+}

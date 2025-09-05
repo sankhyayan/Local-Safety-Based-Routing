@@ -1,0 +1,68 @@
+graphhopper:
+  # OSM data file for Chandigarh
+  datareader.file: ./chandigarh.osm.pbf
+  custom_models.directory: ./profiles
+  graph.encoded_values: road_class, max_speed, road_environment, footway, surface
+  import.osm.ignored_highways:
+  # Location where GraphHopper will store the processed graph data
+  graph.location: ./graph-cache
+  
+  # Vehicle profiles with multiple custom models for user choice
+  profiles:
+    # Balanced routing - good default for most users
+    - name: car_balanced
+      profile: car
+      custom_model_files: ['chandigarh_balanced.json']
+    
+    # Fast routing - prioritizes speed and main roads
+    - name: car_fast
+      profile: car
+      custom_model_files: ['chandigarh_fast.json']
+    
+    # Traffic avoidance - uses smaller roads to avoid congestion
+    - name: car_avoid_traffic
+      profile: car
+      custom_model_files: ['chandigarh_avoid_traffic.json']
+    
+    # Standard car profile (fallback without custom model)
+    - name: car_standard
+      profile: car
+      custom_model_files: ['chandigarh_standard.json']
+    
+    # Walking profile for pedestrian navigation
+    - name: foot
+      profile: foot
+      custom_model_files : ['chandigarh_foot.json']
+    
+    # Cycling profile
+    - name: bike
+      profile: bike
+      custom_model_files : ['chandigarh_bike.json']
+
+  # Enable Contraction Hierarchies for faster queries
+  profiles_ch:
+    - profile: car_balanced
+    - profile: car_fast  
+    - profile: car_avoid_traffic
+    - profile: car_standard
+    - profile: bike
+    
+  # Memory settings for local machine
+  graph.dataaccess.default_type: RAM_STORE
+
+# Simple server configuration for local development
+server:
+  application_connectors:
+    - type: http
+      port: 8989
+      bind_host: localhost  # Only accessible locally
+    - type: http
+      port: 8990
+      bind_host: localhost
+
+  
+# Simple logging for development
+logging:
+  level: INFO
+  appenders:
+    - type: console

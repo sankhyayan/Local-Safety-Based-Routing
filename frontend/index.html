@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Safe Route Chandigarh</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Safest Driving Route in Chandigarh</h1>
+    <input id="start" placeholder="Start: lat,lon (e.g., 30.7333,76.7794)">
+    <input id="end" placeholder="End: lat,lon (e.g., 30.75,76.78)">
+    <button onclick="getRoute()">Get Safest Route</button>
+    <div id="map" style="height: 500px;"></div> 
+    <script src="script.js"></script>
+</body>
+</html>

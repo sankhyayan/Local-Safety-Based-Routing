@@ -1,0 +1,73 @@
+{
+  "priority": [
+    { "if": "true", "multiply_by": 1.0 },
+    { "if": "road_class == MOTORWAY", "multiply_by": 1.2 },
+    { "if": "road_class == TRUNK", "multiply_by": 1.15 },
+    { "if": "road_class == PRIMARY", "multiply_by": 1.1 },
+    { "if": "road_class == SECONDARY", "multiply_by": 1.05 },
+    { "if": "road_class == TERTIARY", "multiply_by": 1.0 },
+    { "if": "road_class == RESIDENTIAL", "multiply_by": 0.85 },
+    { "if": "road_class == LIVING_STREET", "multiply_by": 0.7 },
+    { "if": "road_class == SERVICE", "multiply_by": 0.75 },
+    { "if": "road_class == UNCLASSIFIED", "multiply_by": 0.8 },
+
+    { "if": "in_city_center", "multiply_by": 0.8 },
+    { "if": "in_market_area", "multiply_by": 0.6 },
+    { "if": "in_industrial_zone", "multiply_by": 1.1 },
+
+    { "if": "max_speed > 60", "multiply_by": 1.15 },
+    { "if": "max_speed < 30", "multiply_by": 0.85 },
+    { "if": "road_environment == TUNNEL", "multiply_by": 0.9 },
+    { "if": "road_environment == BRIDGE", "multiply_by": 1.05 },
+    { "if": "surface == UNPAVED", "multiply_by": 0.7 },
+    { "if": "surface == GRAVEL", "multiply_by": 0.6 },
+    { "if": "surface == DIRT", "multiply_by": 0.6 }
+  ],
+  "speed": [
+    { "if": "true", "limit_to": 120 },
+    { "if": "road_class == MOTORWAY", "limit_to": 80 },
+    { "if": "road_class == TRUNK", "limit_to": 70 },
+    { "if": "road_class == PRIMARY", "limit_to": 60 },
+    { "if": "road_class == SECONDARY", "limit_to": 50 },
+    { "if": "road_class == TERTIARY", "limit_to": 45 },
+    { "if": "road_class == RESIDENTIAL", "limit_to": 35 },
+    { "if": "road_class == LIVING_STREET", "limit_to": 25 },
+    { "if": "road_class == SERVICE", "limit_to": 30 },
+    { "if": "road_class == UNCLASSIFIED", "limit_to": 40 },
+    { "if": "in_city_center", "limit_to": 40 },
+    { "if": "in_market_area", "limit_to": 25 }
+  ],
+  "distance_influence": 70,
+  "areas": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "city_center",
+        "properties": { },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[76.7550, 30.7150],[76.7850, 30.7150],[76.7850, 30.7450],[76.7550, 30.7450],[76.7550, 30.7150]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "market_area",
+        "properties": { },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[76.7730, 30.7390],[76.7780, 30.7390],[76.7780, 30.7420],[76.7730, 30.7420],[76.7730, 30.7390]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "industrial_zone",
+        "properties": { },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[76.7200, 30.6800],[76.7500, 30.6800],[76.7500, 30.7000],[76.7200, 30.7000],[76.7200, 30.6800]]]
+        }
+      }
+    ]
+  }
+}

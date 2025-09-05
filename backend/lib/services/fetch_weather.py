@@ -1,5 +1,6 @@
 import os
 import logging
+from pathlib import Path
 from dotenv import load_dotenv
 import requests
 
@@ -7,7 +8,9 @@ import requests
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-load_dotenv()
+# Find .env file in current or parent directories
+env_path = Path(__file__).parent.parent.parent / "backend" / ".env"
+load_dotenv(dotenv_path=env_path)
 
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 

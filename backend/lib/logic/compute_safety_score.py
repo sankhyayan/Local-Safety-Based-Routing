@@ -60,5 +60,7 @@ def compute_safety_score(edge: dict, traffic_incidents: list, weather_factor: fl
             logger.warning(f"Traffic incident parse error: {e}")
             continue
 
+    
+    # Combine factors; higher is worse
     return traffic_factor * weather_factor * accident_risk
             

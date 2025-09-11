@@ -1,5 +1,7 @@
 import logging
+import math
 from backend.lib.logic.compute_safety_score import compute_safety_score
+from backend.lib.services.fetch_traffic_flow import fetch_traffic_flow
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +15,7 @@ def get_road_class_for_index(details, idx):
     return "unclassified"  # default if not found
 
 
-def get_safest_route(routes: list, traffic_incidents: list, weather_factor: float):
+def get_final_route(routes: list, traffic_incidents: list, weather_factor: float):
     """
     Computes the safety score for each route and returns the safest one.
     """
@@ -23,6 +25,8 @@ def get_safest_route(routes: list, traffic_incidents: list, weather_factor: floa
     for idx, route in enumerate(routes):
         total_score = 0
         coordinates = route.get("points", {}).get("coordinates", [])
+        traffic_flow_delay = max(fetch_traffic_flow(coordinates, traffic=True, section_traffic=True), 1)
+        traffic_flow_delay = math.log(1+ (traffic_flow_delay/60.0))
         details = route.get("details", {})
         if not coordinates:
             logger.warning(f"Route {idx} has no points, skipping.")
@@ -38,6 +42,7 @@ def get_safest_route(routes: list, traffic_incidents: list, weather_factor: floa
             score = compute_safety_score(edge, traffic_incidents, weather_factor)
             total_score += score * route["distance"] / max(len(coordinates), 1)
 
+        total_score = total_score * traffic_flow_delay
         logger.info(f"Route {idx} total safety score: {total_score}")
 
         if total_score < min_total_score:

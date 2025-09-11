@@ -13,7 +13,7 @@ def get_road_class_for_index(details, idx):
     return "unclassified"  # default if not found
 
 
-def compute_safest_route_and_score(routes: list, traffic_incidents: list, weather_factor: float):
+def get_safest_route(routes: list, traffic_incidents: list, weather_factor: float):
     """
     Computes the safety score for each route and returns the safest one.
     """

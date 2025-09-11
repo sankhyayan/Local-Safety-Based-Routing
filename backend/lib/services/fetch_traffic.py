@@ -18,7 +18,7 @@ print(f"TOMTOM_API_KEY exists: {'TOMTOM_API_KEY' in os.environ}")
 TOMTOM_API_KEY = os.getenv("TOMTOM_API_KEY")
 print(f"TOMTOM_API_KEY value: {TOMTOM_API_KEY}")
 
-def fetch_live_traffic(bbox: str):
+def fetch_live_incidents(bbox: str):
     """
     Fetches live traffic incidents from the TomTom API.
     

@@ -2,7 +2,7 @@ import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List
 
-from backend.lib.services.fetch_traffic_flow import fetch_traffic_flow
+from backend.lib.services.fetch_traffic_delays import fetch_route_delays
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def prefetch_route_delays(routes: list, *, max_workers: int = 4) -> List[int]:
 
     def task(i: int, coords):
         try:
-            delay = fetch_traffic_flow(coords, traffic=True, section_traffic=True)
+            delay = fetch_route_delays(coords, traffic=True, section_traffic=True)
             if not isinstance(delay, (int, float)) or delay is None:
                 return i, 1
             return i, max(int(delay), 1)

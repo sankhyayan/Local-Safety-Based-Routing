@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from backend.lib.helper.graphhopper_routing import get_routes_from_graphhopper
+from backend.lib.services.graphhopper_routing import get_routes_from_graphhopper
 from backend.lib.helper.live_data import fetch_all_live_data
 from backend.lib.logic.get_safest_routes import get_final_route
 

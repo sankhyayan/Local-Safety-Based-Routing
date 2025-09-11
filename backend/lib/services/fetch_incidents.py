@@ -45,7 +45,7 @@ def fetch_live_incidents(bbox: str):
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         data = response.json()
-        logger.info(f"Traffic data fetched successfully.")
+        logger.info(f"Traffic Incidents data fetched successfully.")
         return data.get("incidents", [])
     except Exception as e:
         logger.error(f"Traffic API error: {e}")

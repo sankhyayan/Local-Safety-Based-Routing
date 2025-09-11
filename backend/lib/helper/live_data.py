@@ -1,6 +1,6 @@
 import logging
 
-from backend.lib.services.fetch_traffic import fetch_live_incidents
+from backend.lib.services.fetch_incidents import fetch_live_incidents
 from backend.lib.services.fetch_weather import fetch_weather
 
 

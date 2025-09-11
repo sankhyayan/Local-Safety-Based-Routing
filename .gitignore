@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# SQLite or local dbs (if any)
+*.sqlite3
+
+# Environments
+.env
+.env.*
+*.env
+backend/.env
+.venv/
+venv/
+graphhopper/safety_venv/
+
+# OS files
+.DS_Store
+Thumbs.db

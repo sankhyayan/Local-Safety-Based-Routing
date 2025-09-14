@@ -6,6 +6,7 @@ safetensors>=0.4.3
 huggingface-hub>=0.24.0
 datasets>=2.20.0
 sentence-transformers>=3.0.0
+pinecone-client>=3.0.0
 
 # Optional quantization / performance
 bitsandbytes; platform_system != "Windows"

@@ -1,5 +1,5 @@
 from pinecone import Pinecone, ServerlessSpec
-from config import PINECONE_API_KEY, PINECONE_ENV  # type: ignore
+from ..config import PINECONE_API_KEY, PINECONE_ENV  # type: ignore
 
 
 def init_pinecone():
@@ -23,7 +23,15 @@ def upsert_vectors(index, data):
     for item in data:
         if len(item) == 3:
             vid, vec, meta = item
-            formatted.append({"id": vid, "values": vec, "metadata": meta})
+            # Sanitize metadata: allow only str, int, float, bool, list[str]
+            clean_meta = {}
+            for k, v in meta.items():
+                if isinstance(v, (str, int, float, bool)):
+                    clean_meta[k] = v
+                elif isinstance(v, list) and all(isinstance(x, str) for x in v):
+                    clean_meta[k] = v
+                # else drop
+            formatted.append({"id": vid, "values": vec, "metadata": clean_meta})
         else:
             vid, vec = item
             formatted.append({"id": vid, "values": vec})

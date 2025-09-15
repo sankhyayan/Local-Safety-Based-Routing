@@ -20,4 +20,4 @@ graphhopper/*.osm.pbf
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.dbgraphhopper/logs/

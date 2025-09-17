@@ -47,8 +47,10 @@ async def get_safest_route(
     traffic_incidents, weather_factor = fetch_all_live_data(start_lat, start_lon, end_lat, end_lon)
 
 
-    # Step 3: Compute safety score for each route
-    safest_route, min_total_score = get_final_route(routes, traffic_incidents, weather_factor)
+    # Step 3: Compute safety scores for all routes (ranked ascending by score)
+    ranked = get_final_route(routes, traffic_incidents, weather_factor)
+    safest_route = ranked[0]["route"] if ranked else None
+    min_total_score = ranked[0]["score"] if ranked else None
 
     # Step 4: Handle fallback
     if safest_route is None:
@@ -67,6 +69,17 @@ async def get_safest_route(
     return {
         "safest_route": safest_route,
         "score": min_total_score,
+        "ranked_routes": [
+            {
+                "route": r["route"],
+                "index": r["index"],
+                "score": r["score"],
+                "distance": r["route"].get("distance"),
+                "time": r["route"].get("time"),
+                "traffic_delay_factor": r.get("traffic_delay_factor"),
+            }
+            for r in ranked
+        ],
         "debug": {
             "routes_found": len(routes),
             "traffic_incidents": traffic_incidents,

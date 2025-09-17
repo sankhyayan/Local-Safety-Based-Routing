@@ -9,10 +9,39 @@
 </head>
 <body>
     <h1>Safest Driving Route in Chandigarh</h1>
-    <input id="start" placeholder="Start: lat,lon (e.g., 30.7333,76.7794)">
-    <input id="end" placeholder="End: lat,lon (e.g., 30.75,76.78)">
-    <button onclick="getRoute()">Get Safest Route</button>
-    <div id="map" style="height: 500px;"></div> 
-    <script src="script.js"></script>
+    <div class="layout">
+        <div class="side-panel">
+            <div class="section">
+                <label>Start</label>
+                <input id="start" placeholder="lat,lon" />
+            </div>
+            <div class="section">
+                <label>End</label>
+                <input id="end" placeholder="lat,lon" />
+            </div>
+            <div class="buttons">
+                <button id="btnRoute">Compute Safest</button>
+                <button id="btnSwap">Swap</button>
+                <button id="btnClearMarkers">Clear Markers</button>
+                <button id="btnClearRoutes">Clear Routes</button>
+            </div>
+            <div class="section">
+                <label><input type="checkbox" id="autoFetch" /> Auto fetch on marker change</label>
+            </div>
+            <div id="messages" class="messages"></div>
+            <div class="section">
+                <h3>Ranked Routes</h3>
+                <table id="routeTable">
+                    <thead><tr><th>#</th><th>Score</th><th>Dist (km)</th><th>Time (min)</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="map-wrapper">
+            <div id="map"></div>
+            <div id="loading" class="loading hidden">Loading...</div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
